@@ -25,6 +25,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>  // Required for atof() function
+#include <math.h>
 
 int main(int argc, char *argv[]) {
     float num1, num2;
@@ -47,7 +48,29 @@ int main(int argc, char *argv[]) {
     
     // Complete your code here
 	switch(operation){
-		case :
+		case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case 'x':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2==0) {
+                printf("Error, division by zero! \n");
+                return 0;
+            } 
+            else {
+                result = num1 / num2;
+                break;
+            }
+        case '%':
+            result = (int)num1 % (int)num2;
+            break;
+        case '^':
+            result = pow(num1, num2);
             break;
 		default:
 			printf("Operation not defined!\n");
