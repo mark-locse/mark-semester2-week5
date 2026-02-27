@@ -12,7 +12,14 @@
  #include <string.h>
  
  int main(void) {
-	 
-	 
+	 char message[1000];
+	 do {
+		printf("> ");
+		fgets(message, sizeof(message), stdin);
+		message[strcspn(message,"\n")]=0;
+		if (strcmp(message,"quit")==0) {
+			break;
+		}
+	} while (1);
 	 return 0;
  }

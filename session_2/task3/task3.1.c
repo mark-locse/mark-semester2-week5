@@ -27,7 +27,7 @@ int main(void) {
     
     // TODO: Generate a random number between min and max
     // Hint: target = min + rand() % (max - min + 1);
-    
+    target = min + rand() % (max - min + 1);
     // TODO: Implement the main game loop
     // This should continue until the person decides to quit
     

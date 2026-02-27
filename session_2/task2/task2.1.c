@@ -20,18 +20,24 @@ int main(void) {
     
     // TODO: Keep asking until valid input is provided
     // Use an appropriate loop structure
-    
-        printf("Enter temperature with scale (e.g., 23.5C or 75F): ");
+        do {
+            printf("Enter temperature with scale (e.g., 23.5C or 75F): ");
+            scanf("%s", input);
+            for (int i=0; i<sizeof(input); i++) {
+                input[i] = toupper(input[i]);
+            }
+        } while (strchr(input,'C')==NULL && strchr(input,'F')==NULL);
+        
         
         // TODO: Use fgets to read the input
         
         // TODO: Remove the newline character from input
         // Hint: input[strcspn(input, "\n")] = 0;
-        
+        input[strcspn(input,"\n")] = 0;
         // TODO: Parse the input to extract temperature and scale
         // Hint: Use sscanf(input, "%f%c", &temperature, &scale);
         // Advanced: Consider handling input with a degree symbol (°)
-        
+        sscanf(input, "%f%c", &temperature, &scale);
         // TODO: Validate the scale (must be 'C', 'c', 'F', or 'f')
         // Convert scale to uppercase for easier comparison
         // Hint: scale = toupper(scale); // toupper() converts 'c' to 'C', 'f' to 'F'
@@ -46,6 +52,21 @@ int main(void) {
     // - If Fahrenheit, convert to Celsius: C = (F - 32) * 5/9
     // - Print the result with appropriate formatting, including the degree symbol (°)
     //   Hint: Use printf("%.1f°C is equal to %.1f°F\n", temperature, converted_temp);
+    switch (scale) {
+        case 'F':
+            converted_temp = (temperature - 32) * 5/9;
+            printf("%.1f°C is equal to %.1f°F\n", converted_temp, temperature);
+            break;
+        case 'C':
+            converted_temp = temperature * 9/5 + 32;
+            printf("%.1f°C is equal to %.1f°F\n", temperature, converted_temp);
+            break;
+        default:
+            printf("error");
+            break;
+        
+    }
+
     
     return 0;
 }

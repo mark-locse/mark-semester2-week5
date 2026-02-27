@@ -12,8 +12,23 @@ int main(void){
  *     if choice == 'q':
  *         break
  */
-	char choice;
+	char choice[100];
 	// complete the rest of the code here
-	
-    return 0;
+	while (1) {
+		printf("Enter 'q' to quit: ");
+		fgets(choice, sizeof(choice), stdin);
+		if (choice[0] == 'q' && choice[1] == '\n') {
+			break;
+		}
+	}
+
+	do {
+		printf("Enter 'q' to quit: ");
+		fgets(choice, sizeof(choice), stdin);
+		if (choice[0] == 'q' && choice[1] == '\n') {
+			break;
+		}
+	} while (1);
+
+	return 0;
 }
